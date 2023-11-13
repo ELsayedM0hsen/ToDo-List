@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Libre+Baskerville&family=Quicksand:wght@300&family=Ruwudu&family=Special+Elite&display=swap');
+
+*, *:before, *:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Special Elite', cursive;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(https://images.pexels.com/photos/1750268/pexels-photo-1750268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
+.todo-app{
+    width: 100%;
+    max-width: 540px;
+    background-color: #ffffff67;
+    padding: 40px 30px 70px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.app-title{
+    display: flex;
+    gap: 1rem;
+    color: rgb(14, 3, 3);
+    font-size: 20px;
+}
+.text-area{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff67;
+    border-radius: 30px;
+}
+.text-area input{
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 12px;
+    padding-left: 20px;
+    font-size: 17px;
+}
+.text-area button{
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 15px 50px;
+    border-radius: 30px;
+    background-color: rgba(12, 155, 105, 0.552);
+    color: #fff;
+    font-size: 18px;
+    transition: all .25s ease;
+}
+.text-area button:hover{
+    filter: brightness(.8);
+}
+.list li {
+    font-size: 30px;
+    padding: 12px 8px 12px 5px;
+    margin-top: 5px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .list input[type="checkbox"] {
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #bc2717;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .list input[type="checkbox"]:checked {
+    background-color: rgba(207, 11, 11, 0.871);
+  }
+  
+  .list input[type="checkbox"] + span {
+    flex: 1;
+  }
+  
+  .list input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    color: #555;
+  }
+
+#delete{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+    font-size: 18px;
+    transition: all .2s ease;
+}
+#delete:hover{
+    background-color: #c9c9c9;
+    color: #fff;
+}
