@@ -1,43 +1,71 @@
 import { useEffect, useState } from "react";
 import "../styles/Home.css";
 import axios from "axios";
-import ItemList from "../List/ItemList";
+import TaskList from "../List/taskList";
+import { useGetUserID } from "../auth/getUserId.js";
+import { useCookies } from "react-cookie";
 
-function Home() {
+const Home = () =>{
+  const userId = useGetUserID();
+  const [cookies, _] = useCookies(["access_token"]);
   const [list, setList] = useState([]);
-  const [newItem, setNewItem] = useState("");
-
-  const getList = async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/items/list");
-      setList(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const [newTask, setNewTask] = useState({
+    title: "",
+    user: userId,
+  });
 
   useEffect(() => {
+    const getList = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/user/list`,
+        {
+          headers: { authorization: cookies.access_token },
+        });
+        console.log("this",response);
+        setList(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
     getList();
+    console.log("gitlist launched");
   }, []);
 
-  const addItem = async () => {
+
+
+  const addTask = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/items/", {
-        title: newItem,
-      });
-      setNewItem("");
+      const response = await axios.post(
+        "http://localhost:5000/api/user/list",
+        newTask,
+        {
+          headers: { authorization: cookies.access_token },
+        }
+      );
+
       setList([...list, response.data]);
-      console.log("added item ");
+      setNewTask(prevValue => {
+        return {
+          ...prevValue,
+          title:""
+        }
+      });
+
+      console.log("added task ", newTask, list);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const deleteItem = async (itemId) => {
+  const deleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:8000/items/${itemId}`);
-      setList(list.filter((item) => item._id !== itemId));
-      console.log("deleteItem");
+      await axios.delete(`http://localhost:5000/api/user/list/${taskId}`,
+      {
+        headers: { authorization: cookies.access_token },
+      });
+      setList(list.filter((task) => task._id !== taskId));
+      console.log("deleteTask");
     } catch (err) {
       console.log(err);
     }
@@ -55,14 +83,24 @@ function Home() {
               type="text"
               id="input-box"
               placeholder="add your tasks"
-              value={newItem}
-              onChange={(e) => setNewItem(e.target.value)}
+              value={newTask.title}
+              name="title"
+              onChange={(e)=> {
+                const {name, value} = e.target;
+                setNewTask(prevValue => {
+                  return {
+                    ...prevValue,
+                    [name]:value
+                  }
+                })
+                }}
             />
-            <button onClick={addItem}>+</button>
+            <button onClick={addTask}>+</button>
           </div>
+          {newTask.title}
           <ul className="list">
-            {list.map((item) => (
-              <ItemList key={item._id} item={item} onDelete={deleteItem} />
+            {list.map((task) => (
+              <TaskList key={task._id} task={task} onDelete={deleteTask}/>
             ))}
           </ul>
         </div>

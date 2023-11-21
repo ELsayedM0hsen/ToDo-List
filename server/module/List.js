@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const listSchema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -8,7 +8,12 @@ const listSchema = new mongoose.Schema({
     complete: {
         type:Boolean,
         default: false
-    }
+    },
+    user: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        require:true
+    },
 },{timestamp:true});
 
-export default mongoose.model("List",listSchema);
+export default mongoose.model("Task",taskSchema);
