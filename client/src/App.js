@@ -1,15 +1,13 @@
-import { Route, Routes } from 'react-router-dom';
-import Home from './componants/pages/Home';
-import Register from './componants/auth/register';
-import Login from './componants/auth/login';
-
+import { Route, Routes } from "react-router-dom";
+import Home from "./componants/pages/Home";
+import Auth from "./componants/pages/Auth";
+import "./componants/styles/App.css";
 function App() {
   return (
-    <div>
+    <div className="container">
       <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path='/' element={<Home />} />
+        <Route path="/" element={<Auth />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </div>
   );

@@ -1,26 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Libre+Baskerville&family=Quicksand:wght@300&family=Ruwudu&family=Special+Elite&display=swap');
 
-*, *:before, *:after{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    font-family: 'Special Elite', cursive;
-}
-
-.container{
-    width: 100%;
-    min-height: 100vh;
-    background-image: url(https://images.pexels.com/photos/1750268/pexels-photo-1750268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; 
-}
 .todo-app{
     width: 100%;
     max-width: 540px;
@@ -51,7 +29,7 @@ body{
     background-color: transparent;
     padding: 12px;
     padding-left: 20px;
-    font-size: 17px;
+    font-size: 20px;
 }
 .text-area button{
     border: none;
@@ -61,11 +39,15 @@ body{
     border-radius: 30px;
     background-color: rgba(12, 155, 105, 0.552);
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
     transition: all .25s ease;
 }
 .text-area button:hover{
     filter: brightness(.8);
+}
+
+.list{
+    font-size: 60px;
 }
 .list li {
     font-size: 30px;
@@ -84,13 +66,13 @@ body{
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    border: 2px solid #bc2717;
+    border: 2px solid #b55247;
     margin-right: 10px;
     cursor: pointer;
   }
   
   .list input[type="checkbox"]:checked {
-    background-color: rgba(207, 11, 11, 0.871);
+    background-color: rgba(173, 20, 20, 0.871);
   }
   
   .list input[type="checkbox"] + span {

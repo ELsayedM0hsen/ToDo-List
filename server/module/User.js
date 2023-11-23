@@ -4,28 +4,29 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-  username: { 
-    type: String,
-     required: true,
-      unique: true 
-    },
-  email: {
-     type: String,
+    username: {
+      type: String,
       required: true,
-       unique: true 
+      unique: true,
     },
-  password: {
-     type: String,
-      required: true 
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
     },
 
-  task: [
-    {
+    task: [
+      {
         type: Schema.Types.ObjectId,
-        ref: 'tasks' ,
-    }],
+        ref: "tasks",
+      },
+    ],
   },
   { timestamps: true }
 );
 
-export default mongoose.model('User', userSchema);
+export default mongoose.model("User", userSchema);

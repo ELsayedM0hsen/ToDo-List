@@ -54,13 +54,12 @@ export const login = async (req, res) => {
     }
 
     const token = jwt.sign(
-      {id: foundUser._id,
-      },
+      { id: foundUser._id },
       process.env.ACCESS_TOKEN_SECRET
     );
     res.json({
       token,
-      userId:foundUser._id,
+      userId: foundUser._id,
     });
   } catch (err) {
     console.log(err);
